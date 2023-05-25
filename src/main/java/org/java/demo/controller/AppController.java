@@ -8,6 +8,7 @@ import org.java.demo.obj.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -27,6 +28,8 @@ public class AppController {
 		movies.add(new Movie(3, "Taxi driver"));
 		return movies;
 	}
+	
+	
 	@GetMapping("/movies")
 	public String getMovieTitles(Model model) {
 	    List<Movie> movies = getBestMovies();
@@ -40,6 +43,18 @@ public class AppController {
 	    model.addAttribute("movies", titles);
 	    return "movies";
 	}
+	@GetMapping("/movies/{id}")
+	public String getMovieById(Model model,
+			@PathVariable("id") int id) {
+		String movie = "";
+		for (Movie mov : getBestMovies()) {
+			if (mov.getId() == id) {
+				movie = mov.getTitle();
+			}
+		}
+		model.addAttribute("movie", movie);
+		return "movie";
+	}
 	
 //	SONGS
 	private List<Song> getBestSongs(){
@@ -52,7 +67,7 @@ public class AppController {
 	@GetMapping("/songs")
 	public String getSongTitles(Model model) {
 	    List<Song> songs = getBestSongs();
-	    String titles = "";
+	    String titles = null;
 	    for (int i = 0; i < songs.size(); i++) {
 	        titles += songs.get(i).getTitle();
 	        if (i < songs.size() - 1) {
@@ -62,7 +77,16 @@ public class AppController {
 	    model.addAttribute("songs", titles);
 	    return "songs";
 	}
-	
-	
-
+	@GetMapping("/songs/{id}")
+	public String getSongById(Model model,
+			@PathVariable("id") int id) {
+		String song = "";
+		for (Song s : getBestSongs()) {
+			if (s.getId() == id) {
+				song = s.getTitle();
+			}
+		}
+		model.addAttribute("song", song);
+		return "song";
+	}
 }
