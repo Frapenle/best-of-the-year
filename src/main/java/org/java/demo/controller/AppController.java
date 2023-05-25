@@ -67,7 +67,7 @@ public class AppController {
 	@GetMapping("/songs")
 	public String getSongTitles(Model model) {
 	    List<Song> songs = getBestSongs();
-	    String titles = null;
+	    String titles = "";
 	    for (int i = 0; i < songs.size(); i++) {
 	        titles += songs.get(i).getTitle();
 	        if (i < songs.size() - 1) {

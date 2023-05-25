@@ -25,9 +25,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Id: " + getTitle()
+		return "Id: " + getId()
 				+ "Titolo: " + getTitle();
 	}
-	
-	
 }

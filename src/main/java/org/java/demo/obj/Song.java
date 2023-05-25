@@ -27,8 +27,7 @@ public class Song {
 
 	@Override
 	public String toString() {
-		return "Id: " + getTitle()
+		return "Id: " + getId()
 				+ "Titolo: " + getTitle();
 	}
-
 }
