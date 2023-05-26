@@ -1,30 +1,32 @@
-package org.java.demo.obj;
+package org.java.demo.pojo;
 
-public class Movie {
+public class Song {
 	private int id;
 	private String title;
-	public Movie(int id, String title) {
+
+	public Song(int id, String title) {
 		setId(id);
 		setTitle(title);
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Id: " + getId()
 				+ "Titolo: " + getTitle();
 	}

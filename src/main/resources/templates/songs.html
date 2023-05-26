@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Spring movies</title>
-</head>
+<head th:replace="~{fragments/head :: head}">
 <body>
-	<h1 style="text-align:center" th:text="'Best songs:'"></h1>
-		<h3 th:text="${songs}"></h3>
+	<div class="container-fluid">
+		<header class="d-flex align-items-center">
+			<nav class="w-25">
+				<div th:replace="~{fragments/link :: home}"></div>
+			</nav>
+			<h1 class="text-center w-50" th:text="'Best songs'"></h1>
+		</header>
+		<section>
+			<div th:each="song : ${songs}" th:object="${song}">
+				<div class="link-b">
+					<a th:href="@{/songs/{id}(id=*{id})}">
+						<span th:text="*{title}"></span>
+					</a>
+				</div>
+			</div>
+			
+		</section>
+	</div>
 </body>
 </html>

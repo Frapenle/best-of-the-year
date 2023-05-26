@@ -2,10 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Movie ID</title>
+<head th:replace="~{fragments/head :: head}">
+</head>
 </head>
 <body>
-	<h1 style="text-align:center" th:text="'Movie id: ' + ${id}"></h1>
-		<h3 th:text="${movie}"></h3>
+	<div class="container-fluid">
+		<header class="d-flex align-items-center">
+			<nav class="w-25">
+				<div th:replace="~{fragments/link :: home}"></div>
+			</nav>
+			<h1 class="text-center w-50" th:text="'Movie id: ' + ${id}"></h1>
+		</header>
+		
+		<section>
+			<p th:if="${movie != null}" th:text="${movie.title}"></p>
+		</section>
+	</div>
 </body>
 </html>

@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Song ID</title>
+<head th:replace="~{fragments/head :: head}">
 </head>
 <body>
-	<h1 style="text-align:center" th:text="'Song ID: ' + ${id}"></h1>
-		<h3 th:text="${song}"></h3>
+	<div class="container-fluid">
+		<header class="d-flex align-items-center">
+			<nav class="w-25">
+				<div th:replace="~{fragments/link :: home}"></div>
+			</nav>
+			<h1 class="text-center w-50" th:text="'Song ID: ' + ${id}"></h1>
+		</header>
+		<section>
+			<p th:if="${song != null}" th:text="${song.title}"></p>
+		</section>
+	</div>
 </body>
 </html>
